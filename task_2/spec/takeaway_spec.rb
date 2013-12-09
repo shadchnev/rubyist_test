@@ -12,10 +12,18 @@ describe Takeaway do
   context "ordering" do
 
     it "should allow ordering two pizzas and a salad" do
-      order = [{:pizza => 2}, {:salad => 1}]
-      allow(takeaway).to receive(:send_text).with("Your order is on the way")
+      order = {:pizza => 2, :salad => 1}
+      allow(takeaway).to receive(:send_text)
       expect {takeaway.place_order(order, 20)}.not_to raise_error
+      expect(takeaway).to have_received(:send_text).with("Your order is on the way")
     end
+
+    it "should raise an error if the expected total does not match the actual total" do
+      order = {:pizza => 2, :salad => 1}
+      allow(takeaway).to receive(:send_text).with("Your order is on the way")
+      expect {takeaway.place_order(order, 21)}.to raise_error
+    end
+
 
   end
 end
