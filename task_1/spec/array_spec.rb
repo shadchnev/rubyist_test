@@ -10,6 +10,7 @@ describe Array do
 
     it "should be able to multiply each element of array by the result of multiplying the previous two elements" do
       original_method = [1,2,3,4].inject([]) {|result, element| result * element} 
+      # there's no expectation here – why?
     end
 
 
