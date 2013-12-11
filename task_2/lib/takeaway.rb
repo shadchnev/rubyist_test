@@ -1,9 +1,14 @@
 require 'rubygems'
 require 'twilio-ruby'
 
+# put these in env variables instead,
+# or someone is going to steal them once you push to github
 ACCOUNT_SID = 'AC95850dcf83082ab4acbc5f33cf59e515'
 AUTH_TOKEN = 'ac95dd3697b16ade304a95d5ca1a9e5f'
 
+# Everything makes sense but I remember I helped you a lot with this code
+# If you promise me you can write this code from scratch without help,
+# that'll be really impressive
 
 class Takeaway
   MENU = {pizza: 8, hamburger: 4.50, cheeseburger: 5, salad: 4, fries: 2.50}
@@ -29,7 +34,7 @@ class Takeaway
 
     account = client.account
     text_message = account.sms.messages.create({:from => '+441865922057', :to => '07766778890', :body => message})
-    puts message
+    # don't print things, just return them
   end
 
 end
